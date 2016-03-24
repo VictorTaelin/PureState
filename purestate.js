@@ -9,10 +9,7 @@ var PureState = (function(){
   function refresh(node){
     // Gathers the values that this node depend on
     // and calls its compute() function with them.
-    var depended_values = [];
-    for (var i=0; i<node.dependencies.length; ++i)
-      depended_values.push(node.dependencies[i].value);
-    node.value = node.compute.apply(null, depended_values);
+    node.value = node.compute.apply(null);
 
     // Refresh each node that depends on this one.
     for (var i=0; i<node.depended_by.length; ++i)
@@ -64,7 +61,7 @@ var PureState = (function(){
     capturing_deps = true;
     node.compute();
     capturing_deps = false;
-    node.dependencies = captured_deps;
+
     for (var i=0; i<captured_deps.length; ++i)
       captured_deps[i].depended_by.push(node);
 
