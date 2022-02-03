@@ -24,7 +24,7 @@ console.log(z());
 
 // Those above output "1", "2", "[1, 2, 3]"
 
-// If you change a stateful vriable, all variables that depend on it are updated.
+// If you change a stateful variable, all variables that depend on it are updated.
 
 x(10); // sets x to 10
 
